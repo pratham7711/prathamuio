@@ -1,0 +1,78 @@
+/* @pratham/ui — Design Tokens */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ── Backgrounds ─────────────────────────────────── */
+  --ui-bg-0: #080810;
+  --ui-bg-1: #0f0f1a;
+  --ui-bg-2: #15151f;
+  --ui-bg-3: #1c1c2a;
+
+  /* ── Accent (override per-project) ───────────────── */
+  --ui-accent: #00E5D1;
+  --ui-accent-dim: rgba(0, 229, 209, 0.25);
+  --ui-accent-glow: rgba(0, 229, 209, 0.12);
+
+  /* ── Text ─────────────────────────────────────────── */
+  --ui-text-0: #ffffff;
+  --ui-text-1: rgba(255, 255, 255, 0.75);
+  --ui-text-2: rgba(255, 255, 255, 0.45);
+
+  /* ── Borders ──────────────────────────────────────── */
+  --ui-border: rgba(255, 255, 255, 0.08);
+  --ui-border-strong: rgba(255, 255, 255, 0.15);
+
+  /* ── Glass ────────────────────────────────────────── */
+  --ui-glass: rgba(255, 255, 255, 0.03);
+  --ui-glass-border: rgba(255, 255, 255, 0.07);
+
+  /* ── Radii ────────────────────────────────────────── */
+  --ui-r-sm: 6px;
+  --ui-r-md: 10px;
+  --ui-r-lg: 16px;
+  --ui-r-xl: 24px;
+  --ui-r-full: 9999px;
+
+  /* ── Spacing ──────────────────────────────────────── */
+  --ui-sp-1: 4px;
+  --ui-sp-2: 8px;
+  --ui-sp-3: 12px;
+  --ui-sp-4: 16px;
+  --ui-sp-5: 20px;
+  --ui-sp-6: 24px;
+  --ui-sp-8: 32px;
+  --ui-sp-10: 40px;
+  --ui-sp-12: 48px;
+  --ui-sp-16: 64px;
+
+  /* ── Typography ───────────────────────────────────── */
+  --ui-font: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ui-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Transitions ──────────────────────────────────── */
+  --ui-t-fast: 120ms ease;
+  --ui-t-base: 220ms ease;
+  --ui-t-slow: 380ms ease;
+
+  /* ── Shadows ──────────────────────────────────────── */
+  --ui-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.4);
+  --ui-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --ui-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --ui-glow: 0 0 24px var(--ui-accent-glow);
+
+  /* ── Z-index ──────────────────────────────────────── */
+  --ui-z-base: 1;
+  --ui-z-overlay: 10;
+  --ui-z-modal: 100;
+  --ui-z-toast: 200;
+
+  /* ── Semantic status colors ───────────────────────── */
+  --ui-success: #22c55e;
+  --ui-success-dim: rgba(34, 197, 94, 0.2);
+  --ui-warning: #f59e0b;
+  --ui-warning-dim: rgba(245, 158, 11, 0.2);
+  --ui-danger: #ef4444;
+  --ui-danger-dim: rgba(239, 68, 68, 0.2);
+  --ui-neutral: rgba(255, 255, 255, 0.45);
+  --ui-neutral-dim: rgba(255, 255, 255, 0.08);
+}
