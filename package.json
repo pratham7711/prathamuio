@@ -1,6 +1,6 @@
 {
-  "name": "@pratham/ui",
-  "version": "1.0.0",
+  "name": "@pratham7711/ui",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,10 +11,17 @@
     "preview": "vite preview"
   },
   "exports": {
-    ".": "./dist/index.js",
-    "./styles": "./dist/styles.css"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles": {
+      "types": "./dist/styles.d.ts",
+      "default": "./dist/styles.css"
+    }
   },
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],

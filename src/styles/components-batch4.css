@@ -1,0 +1,761 @@
+/* @pratham/ui — Batch 4 Component Styles: Checkbox, Radio, Slider, FileUpload */
+
+/* ══════════════════════════════════════════════════════════════
+   CHECKBOX
+   ══════════════════════════════════════════════════════════════ */
+
+.ui-checkbox {
+  font-family: var(--ui-font);
+  position: relative;
+}
+
+.ui-checkbox-label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--ui-sp-2);
+  cursor: pointer;
+  user-select: none;
+}
+
+.ui-checkbox-disabled .ui-checkbox-label {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* Hidden native input */
+.ui-checkbox-native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Custom box */
+.ui-checkbox-input-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ui-checkbox-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--ui-border-strong);
+  border-radius: var(--ui-r-sm);
+  background: var(--ui-bg-2);
+  transition: all var(--ui-t-base);
+  position: relative;
+}
+
+/* Sizes */
+.ui-checkbox-sm .ui-checkbox-box { width: 16px; height: 16px; border-radius: 4px; }
+.ui-checkbox-md .ui-checkbox-box { width: 20px; height: 20px; }
+.ui-checkbox-lg .ui-checkbox-box { width: 24px; height: 24px; }
+
+.ui-checkbox-sm .ui-checkbox-check,
+.ui-checkbox-sm .ui-checkbox-indeterminate { width: 12px; height: 12px; }
+.ui-checkbox-md .ui-checkbox-check,
+.ui-checkbox-md .ui-checkbox-indeterminate { width: 14px; height: 14px; }
+.ui-checkbox-lg .ui-checkbox-check,
+.ui-checkbox-lg .ui-checkbox-indeterminate { width: 18px; height: 18px; }
+
+/* SVG icons hidden by default */
+.ui-checkbox-check,
+.ui-checkbox-indeterminate {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all var(--ui-t-fast);
+  color: var(--ui-bg-0);
+}
+
+/* Checked state */
+.ui-checkbox-native:checked ~ .ui-checkbox-box .ui-checkbox-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Indeterminate state */
+.ui-checkbox-native:indeterminate ~ .ui-checkbox-box .ui-checkbox-check { opacity: 0; transform: scale(0.5); }
+.ui-checkbox-native:indeterminate ~ .ui-checkbox-box .ui-checkbox-indeterminate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Color: accent (default) */
+.ui-checkbox-color-accent .ui-checkbox-native:checked ~ .ui-checkbox-box,
+.ui-checkbox-color-accent .ui-checkbox-native:indeterminate ~ .ui-checkbox-box {
+  background: var(--ui-accent);
+  border-color: var(--ui-accent);
+}
+.ui-checkbox-color-success .ui-checkbox-native:checked ~ .ui-checkbox-box,
+.ui-checkbox-color-success .ui-checkbox-native:indeterminate ~ .ui-checkbox-box {
+  background: var(--ui-success);
+  border-color: var(--ui-success);
+}
+.ui-checkbox-color-warning .ui-checkbox-native:checked ~ .ui-checkbox-box,
+.ui-checkbox-color-warning .ui-checkbox-native:indeterminate ~ .ui-checkbox-box {
+  background: var(--ui-warning);
+  border-color: var(--ui-warning);
+}
+.ui-checkbox-color-danger .ui-checkbox-native:checked ~ .ui-checkbox-box,
+.ui-checkbox-color-danger .ui-checkbox-native:indeterminate ~ .ui-checkbox-box {
+  background: var(--ui-danger);
+  border-color: var(--ui-danger);
+}
+
+/* Variant: filled — always has background tint */
+.ui-checkbox-filled .ui-checkbox-box {
+  background: var(--ui-bg-3);
+}
+
+/* Variant: outlined — transparent bg, stronger border */
+.ui-checkbox-outlined .ui-checkbox-box {
+  background: transparent;
+  border-width: 2px;
+}
+
+/* Focus ring (keyboard only) */
+.ui-checkbox-native:focus-visible ~ .ui-checkbox-box {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ui-accent-glow);
+}
+
+/* Hover */
+.ui-checkbox:not(.ui-checkbox-disabled) .ui-checkbox-label:hover .ui-checkbox-box {
+  border-color: var(--ui-accent);
+  box-shadow: 0 0 12px var(--ui-accent-glow);
+}
+
+/* Error */
+.ui-checkbox-error .ui-checkbox-box {
+  border-color: var(--ui-danger) !important;
+}
+
+/* Text */
+.ui-checkbox-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 1px;
+}
+
+.ui-checkbox-label-text {
+  font-size: 14px;
+  color: var(--ui-text-0);
+  line-height: 1.4;
+}
+.ui-checkbox-sm .ui-checkbox-label-text { font-size: 12px; }
+.ui-checkbox-lg .ui-checkbox-label-text { font-size: 16px; }
+
+.ui-checkbox-description {
+  font-size: 12px;
+  color: var(--ui-text-2);
+  line-height: 1.4;
+}
+.ui-checkbox-lg .ui-checkbox-description { font-size: 14px; }
+
+.ui-checkbox-error-msg {
+  display: block;
+  margin-top: var(--ui-sp-1);
+  margin-left: 28px;
+  font-size: 12px;
+  color: var(--ui-danger);
+}
+.ui-checkbox-sm .ui-checkbox-error-msg { margin-left: 24px; }
+.ui-checkbox-lg .ui-checkbox-error-msg { margin-left: 32px; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   RADIO
+   ══════════════════════════════════════════════════════════════ */
+
+.ui-radio-group {
+  font-family: var(--ui-font);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-sp-2);
+}
+
+.ui-radio-group-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ui-text-0);
+  margin-bottom: var(--ui-sp-1);
+}
+
+.ui-radio-group-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-sp-2);
+}
+
+.ui-radio-group-horizontal .ui-radio-group-items {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--ui-sp-4);
+}
+
+.ui-radio-group-error-msg {
+  display: block;
+  margin-top: var(--ui-sp-1);
+  font-size: 12px;
+  color: var(--ui-danger);
+}
+
+/* Individual radio */
+.ui-radio {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--ui-sp-2);
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--ui-t-base);
+}
+
+.ui-radio-disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* Hidden native */
+.ui-radio-native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Custom circle */
+.ui-radio-input-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ui-radio-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ui-r-full);
+  border: 1.5px solid var(--ui-border-strong);
+  background: var(--ui-bg-2);
+  transition: all var(--ui-t-base);
+}
+
+/* Sizes */
+.ui-radio-sm .ui-radio-circle { width: 16px; height: 16px; }
+.ui-radio-md .ui-radio-circle { width: 20px; height: 20px; }
+.ui-radio-lg .ui-radio-circle { width: 24px; height: 24px; }
+
+/* Inner dot */
+.ui-radio-dot {
+  border-radius: var(--ui-r-full);
+  background: var(--ui-bg-0);
+  transform: scale(0);
+  transition: transform var(--ui-t-fast);
+}
+
+.ui-radio-sm .ui-radio-dot { width: 6px; height: 6px; }
+.ui-radio-md .ui-radio-dot { width: 8px; height: 8px; }
+.ui-radio-lg .ui-radio-dot { width: 10px; height: 10px; }
+
+/* Checked */
+.ui-radio-checked .ui-radio-circle {
+  background: var(--ui-accent);
+  border-color: var(--ui-accent);
+}
+
+.ui-radio-checked .ui-radio-dot {
+  transform: scale(1);
+}
+
+/* Filled variant */
+.ui-radio-filled .ui-radio-circle {
+  background: var(--ui-bg-3);
+}
+.ui-radio-filled.ui-radio-checked .ui-radio-circle {
+  background: var(--ui-accent);
+}
+
+/* Card variant */
+.ui-radio-card {
+  padding: var(--ui-sp-3) var(--ui-sp-4);
+  border: 1.5px solid var(--ui-border);
+  border-radius: var(--ui-r-md);
+  background: var(--ui-glass);
+  backdrop-filter: blur(8px);
+}
+
+.ui-radio-card:hover:not(.ui-radio-disabled) {
+  border-color: var(--ui-border-strong);
+  background: var(--ui-bg-2);
+}
+
+.ui-radio-card.ui-radio-checked {
+  border-color: var(--ui-accent);
+  background: var(--ui-accent-glow);
+  box-shadow: 0 0 16px var(--ui-accent-glow), var(--ui-shadow-sm);
+}
+
+/* Focus ring */
+.ui-radio-native:focus-visible ~ .ui-radio-circle {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ui-accent-glow);
+}
+
+/* Hover */
+.ui-radio:not(.ui-radio-disabled):not(.ui-radio-card):hover .ui-radio-circle {
+  border-color: var(--ui-accent);
+  box-shadow: 0 0 12px var(--ui-accent-glow);
+}
+
+/* Error on group */
+.ui-radio-group-error .ui-radio-circle {
+  border-color: var(--ui-danger);
+}
+
+/* Text */
+.ui-radio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 1px;
+}
+
+.ui-radio-label-text {
+  font-size: 14px;
+  color: var(--ui-text-0);
+  line-height: 1.4;
+}
+.ui-radio-sm .ui-radio-label-text { font-size: 12px; }
+.ui-radio-lg .ui-radio-label-text { font-size: 16px; }
+
+.ui-radio-description {
+  font-size: 12px;
+  color: var(--ui-text-2);
+  line-height: 1.4;
+}
+.ui-radio-lg .ui-radio-description { font-size: 14px; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   SLIDER
+   ══════════════════════════════════════════════════════════════ */
+
+.ui-slider {
+  font-family: var(--ui-font);
+  width: 100%;
+  position: relative;
+  touch-action: none;
+}
+
+.ui-slider-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Header */
+.ui-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--ui-sp-2);
+}
+
+.ui-slider-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ui-text-0);
+}
+
+.ui-slider-value {
+  font-size: 13px;
+  color: var(--ui-text-1);
+  font-family: var(--ui-font-mono);
+}
+
+/* Track */
+.ui-slider-track {
+  position: relative;
+  width: 100%;
+  border-radius: var(--ui-r-full);
+  background: var(--ui-bg-3);
+  cursor: pointer;
+}
+
+.ui-slider-sm .ui-slider-track { height: 4px; }
+.ui-slider-md .ui-slider-track { height: 6px; }
+.ui-slider-lg .ui-slider-track { height: 8px; }
+
+/* Fill */
+.ui-slider-fill {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: var(--ui-r-full);
+  background: var(--ui-accent);
+  transition: width 0.05s ease;
+  pointer-events: none;
+}
+
+.ui-slider-gradient .ui-slider-fill {
+  background: linear-gradient(90deg, var(--ui-accent), #8b5cf6, #ec4899);
+}
+
+.ui-slider-accent .ui-slider-fill {
+  background: var(--ui-accent);
+  box-shadow: 0 0 12px var(--ui-accent-glow);
+}
+
+/* Thumb */
+.ui-slider-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--ui-r-full);
+  background: var(--ui-text-0);
+  border: 2px solid var(--ui-accent);
+  box-shadow: var(--ui-shadow-sm);
+  cursor: grab;
+  transition: box-shadow var(--ui-t-fast), transform 0.05s ease;
+  z-index: var(--ui-z-base);
+}
+
+.ui-slider-thumb:active { cursor: grabbing; }
+
+.ui-slider-sm .ui-slider-thumb { width: 14px; height: 14px; }
+.ui-slider-md .ui-slider-thumb { width: 18px; height: 18px; }
+.ui-slider-lg .ui-slider-thumb { width: 22px; height: 22px; }
+
+/* Focus ring */
+.ui-slider-thumb:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ui-accent-glow), var(--ui-shadow-sm);
+}
+
+/* Hover glow */
+.ui-slider-thumb:hover {
+  box-shadow: 0 0 16px var(--ui-accent-dim), var(--ui-shadow-sm);
+}
+
+/* Tooltip */
+.ui-slider-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--ui-sp-1) var(--ui-sp-2);
+  font-size: 12px;
+  font-family: var(--ui-font-mono);
+  color: var(--ui-text-0);
+  background: var(--ui-bg-3);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-r-sm);
+  box-shadow: var(--ui-shadow-md);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: var(--ui-z-overlay);
+}
+
+/* Marks */
+.ui-slider-marks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+}
+
+.ui-slider-mark {
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ui-slider-mark-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--ui-r-full);
+  background: var(--ui-border-strong);
+  transform: translateY(-50%);
+}
+
+.ui-slider-mark-label {
+  position: absolute;
+  top: calc(100% + 10px);
+  font-size: 11px;
+  color: var(--ui-text-2);
+  white-space: nowrap;
+  transform: translateY(0);
+}
+
+.ui-slider-lg .ui-slider-mark-label { font-size: 12px; top: calc(100% + 12px); }
+
+
+/* ══════════════════════════════════════════════════════════════
+   FILE UPLOAD
+   ══════════════════════════════════════════════════════════════ */
+
+.ui-file-upload {
+  font-family: var(--ui-font);
+  width: 100%;
+}
+
+.ui-file-upload-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Hidden native input */
+.ui-file-upload-native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Dropzone variant ─────────────────────────────── */
+.ui-file-upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-sp-2);
+  border: 2px dashed var(--ui-border-strong);
+  border-radius: var(--ui-r-lg);
+  background: var(--ui-glass);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: all var(--ui-t-base);
+  text-align: center;
+}
+
+.ui-file-upload-sm .ui-file-upload-zone { padding: var(--ui-sp-4) var(--ui-sp-4); }
+.ui-file-upload-md .ui-file-upload-zone { padding: var(--ui-sp-8) var(--ui-sp-6); }
+.ui-file-upload-lg .ui-file-upload-zone { padding: var(--ui-sp-12) var(--ui-sp-8); }
+
+.ui-file-upload-zone:hover {
+  border-color: var(--ui-accent);
+  background: var(--ui-accent-glow);
+  box-shadow: 0 0 24px var(--ui-accent-glow);
+}
+
+.ui-file-upload-zone:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ui-accent-glow);
+}
+
+/* Drag over state */
+.ui-file-upload-dragover .ui-file-upload-zone {
+  border-color: var(--ui-accent);
+  border-style: solid;
+  background: var(--ui-accent-glow);
+  box-shadow: 0 0 32px var(--ui-accent-glow), inset 0 0 20px var(--ui-accent-glow);
+  transform: scale(1.01);
+}
+
+/* Icon */
+.ui-file-upload-icon {
+  color: var(--ui-text-2);
+  transition: color var(--ui-t-base);
+}
+
+.ui-file-upload-sm .ui-file-upload-icon { width: 24px; height: 24px; }
+.ui-file-upload-md .ui-file-upload-icon { width: 32px; height: 32px; }
+.ui-file-upload-lg .ui-file-upload-icon { width: 40px; height: 40px; }
+
+.ui-file-upload-zone:hover .ui-file-upload-icon,
+.ui-file-upload-dragover .ui-file-upload-icon {
+  color: var(--ui-accent);
+}
+
+.ui-file-upload-zone-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ui-text-0);
+}
+.ui-file-upload-sm .ui-file-upload-zone-label { font-size: 12px; }
+.ui-file-upload-lg .ui-file-upload-zone-label { font-size: 16px; }
+
+.ui-file-upload-zone-desc {
+  font-size: 12px;
+  color: var(--ui-text-2);
+}
+.ui-file-upload-lg .ui-file-upload-zone-desc { font-size: 14px; }
+
+/* ── Button variant ───────────────────────────────── */
+.ui-file-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-sp-2);
+  font-family: var(--ui-font);
+  font-weight: 500;
+  border: 1px solid var(--ui-border-strong);
+  border-radius: var(--ui-r-md);
+  background: var(--ui-bg-3);
+  color: var(--ui-text-0);
+  cursor: pointer;
+  transition: all var(--ui-t-base);
+}
+
+.ui-file-upload-sm .ui-file-upload-btn {
+  padding: var(--ui-sp-1) var(--ui-sp-3);
+  font-size: 12px;
+}
+.ui-file-upload-md .ui-file-upload-btn {
+  padding: var(--ui-sp-2) var(--ui-sp-4);
+  font-size: 14px;
+}
+.ui-file-upload-lg .ui-file-upload-btn {
+  padding: var(--ui-sp-3) var(--ui-sp-6);
+  font-size: 16px;
+}
+
+.ui-file-upload-btn .ui-file-upload-icon {
+  width: 16px;
+  height: 16px;
+}
+.ui-file-upload-lg .ui-file-upload-btn .ui-file-upload-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.ui-file-upload-btn:hover:not(:disabled) {
+  border-color: var(--ui-accent);
+  color: var(--ui-accent);
+  background: var(--ui-glass);
+  box-shadow: 0 0 16px var(--ui-accent-glow);
+}
+
+.ui-file-upload-btn:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+}
+
+/* ── Minimal variant ──────────────────────────────── */
+.ui-file-upload-minimal {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-sp-2);
+}
+
+.ui-file-upload-link {
+  font-family: var(--ui-font);
+  font-weight: 500;
+  color: var(--ui-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: all var(--ui-t-fast);
+  padding: 0;
+}
+
+.ui-file-upload-sm .ui-file-upload-link { font-size: 12px; }
+.ui-file-upload-md .ui-file-upload-link { font-size: 14px; }
+.ui-file-upload-lg .ui-file-upload-link { font-size: 16px; }
+
+.ui-file-upload-link:hover:not(:disabled) {
+  filter: brightness(1.2);
+}
+
+.ui-file-upload-link:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+}
+
+.ui-file-upload-file-count {
+  font-size: 12px;
+  color: var(--ui-text-2);
+}
+
+/* ── File list ────────────────────────────────────── */
+.ui-file-upload-files {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-sp-1);
+  margin-top: var(--ui-sp-3);
+}
+
+.ui-file-upload-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ui-sp-2);
+  padding: var(--ui-sp-2) var(--ui-sp-3);
+  background: var(--ui-bg-2);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-r-sm);
+  transition: border-color var(--ui-t-fast);
+}
+
+.ui-file-upload-file:hover {
+  border-color: var(--ui-border-strong);
+}
+
+.ui-file-upload-file-name {
+  font-size: 13px;
+  color: var(--ui-text-1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.ui-file-upload-file-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  border-radius: var(--ui-r-sm);
+  background: transparent;
+  color: var(--ui-text-2);
+  cursor: pointer;
+  transition: all var(--ui-t-fast);
+}
+
+.ui-file-upload-file-remove svg {
+  width: 12px;
+  height: 12px;
+}
+
+.ui-file-upload-file-remove:hover {
+  background: var(--ui-danger-dim);
+  color: var(--ui-danger);
+}
+
+.ui-file-upload-file-remove:focus-visible {
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 1px;
+}

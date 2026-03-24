@@ -1,0 +1,734 @@
+/* @pratham/ui — Batch 7 Component Styles (ConfirmDialog, TreeView, SearchInput, LoadingOverlay) */
+
+
+/* ══════════════════════════════════════════════════════
+   CONFIRM DIALOG
+   ══════════════════════════════════════════════════════ */
+
+.ui-confirm-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ui-z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  animation: ui-confirm-backdrop-in var(--ui-t-base) both;
+}
+
+@keyframes ui-confirm-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ui-confirm-dialog {
+  font-family: var(--ui-font);
+  background: var(--ui-bg-2);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-r-lg);
+  box-shadow: var(--ui-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--ui-sp-8);
+  max-width: 90vw;
+  animation: ui-confirm-card-in var(--ui-t-base) both;
+}
+
+@keyframes ui-confirm-card-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Sizes ────────────────────────────────────────── */
+
+.ui-confirm-dialog-sm { width: 320px; padding: var(--ui-sp-5); }
+.ui-confirm-dialog-md { width: 420px; padding: var(--ui-sp-8); }
+.ui-confirm-dialog-lg { width: 540px; padding: var(--ui-sp-10); }
+
+/* ── Icon ─────────────────────────────────────────── */
+
+.ui-confirm-dialog-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--ui-r-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--ui-sp-4);
+  font-size: 24px;
+}
+
+.ui-confirm-dialog-sm .ui-confirm-dialog-icon { width: 44px; height: 44px; }
+.ui-confirm-dialog-lg .ui-confirm-dialog-icon { width: 64px; height: 64px; }
+
+/* Variant icon colors */
+.ui-confirm-dialog-info .ui-confirm-dialog-icon {
+  background: var(--ui-accent-glow);
+  color: var(--ui-accent);
+}
+.ui-confirm-dialog-success .ui-confirm-dialog-icon {
+  background: var(--ui-success-dim);
+  color: var(--ui-success);
+}
+.ui-confirm-dialog-warning .ui-confirm-dialog-icon {
+  background: var(--ui-warning-dim);
+  color: var(--ui-warning);
+}
+.ui-confirm-dialog-danger .ui-confirm-dialog-icon {
+  background: var(--ui-danger-dim);
+  color: var(--ui-danger);
+}
+.ui-confirm-dialog-custom .ui-confirm-dialog-icon {
+  background: var(--ui-glass);
+  color: var(--ui-text-0);
+}
+
+/* ── Title ────────────────────────────────────────── */
+
+.ui-confirm-dialog-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ui-text-0);
+  margin: 0 0 var(--ui-sp-2);
+  line-height: 1.3;
+}
+
+.ui-confirm-dialog-sm .ui-confirm-dialog-title { font-size: 16px; }
+.ui-confirm-dialog-lg .ui-confirm-dialog-title { font-size: 20px; }
+
+/* ── Description ──────────────────────────────────── */
+
+.ui-confirm-dialog-description {
+  font-size: 14px;
+  color: var(--ui-text-1);
+  margin: 0 0 var(--ui-sp-4);
+  line-height: 1.5;
+  max-width: 100%;
+}
+
+/* ── Content ──────────────────────────────────────── */
+
+.ui-confirm-dialog-content {
+  width: 100%;
+  margin-bottom: var(--ui-sp-4);
+}
+
+/* ── Actions ──────────────────────────────────────── */
+
+.ui-confirm-dialog-actions {
+  display: flex;
+  gap: var(--ui-sp-3);
+  width: 100%;
+  justify-content: center;
+  margin-top: var(--ui-sp-2);
+}
+
+.ui-confirm-dialog-btn {
+  font-family: var(--ui-font);
+  font-size: 14px;
+  font-weight: 500;
+  padding: var(--ui-sp-2) var(--ui-sp-5);
+  border-radius: var(--ui-r-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background var(--ui-t-fast), opacity var(--ui-t-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ui-sp-2);
+  min-width: 80px;
+  justify-content: center;
+}
+
+.ui-confirm-dialog-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ui-confirm-dialog-btn-cancel {
+  background: var(--ui-bg-3);
+  color: var(--ui-text-1);
+  border-color: var(--ui-border);
+}
+
+.ui-confirm-dialog-btn-cancel:hover:not(:disabled) {
+  background: var(--ui-glass);
+}
+
+/* Confirm button variants */
+.ui-confirm-dialog-btn-confirm {
+  background: var(--ui-accent);
+  color: var(--ui-bg-0);
+}
+.ui-confirm-dialog-btn-confirm:hover:not(:disabled) { opacity: 0.85; }
+
+.ui-confirm-dialog-btn-info    { background: var(--ui-accent); color: var(--ui-bg-0); }
+.ui-confirm-dialog-btn-success { background: var(--ui-success); color: var(--ui-bg-0); }
+.ui-confirm-dialog-btn-warning { background: var(--ui-warning); color: var(--ui-bg-0); }
+.ui-confirm-dialog-btn-danger  { background: var(--ui-danger); color: #fff; }
+.ui-confirm-dialog-btn-custom  { background: var(--ui-accent); color: var(--ui-bg-0); }
+
+/* ── Spinner ──────────────────────────────────────── */
+
+.ui-confirm-dialog-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: var(--ui-r-full);
+  animation: ui-confirm-spin 0.6s linear infinite;
+}
+
+@keyframes ui-confirm-spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ══════════════════════════════════════════════════════
+   TREE VIEW
+   ══════════════════════════════════════════════════════ */
+
+.ui-tree {
+  font-family: var(--ui-font);
+  color: var(--ui-text-1);
+  outline: none;
+}
+
+/* ── Sizes ────────────────────────────────────────── */
+
+.ui-tree-sm { font-size: 13px; }
+.ui-tree-md { font-size: 14px; }
+.ui-tree-lg { font-size: 15px; }
+
+/* ── Node ─────────────────────────────────────────── */
+
+.ui-tree-node {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-sp-1);
+  padding: var(--ui-sp-1) var(--ui-sp-2);
+  border-radius: var(--ui-r-sm);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: background var(--ui-t-fast), color var(--ui-t-fast);
+}
+
+.ui-tree-sm .ui-tree-node { padding: 2px var(--ui-sp-1); gap: 2px; }
+.ui-tree-lg .ui-tree-node { padding: var(--ui-sp-2) var(--ui-sp-3); gap: var(--ui-sp-2); }
+
+.ui-tree-node:hover {
+  background: var(--ui-glass);
+}
+
+.ui-tree-node-focused {
+  outline: 1px solid var(--ui-accent-dim);
+  outline-offset: -1px;
+}
+
+.ui-tree-node-selected {
+  color: var(--ui-accent);
+}
+
+.ui-tree-node-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Filled variant ───────────────────────────────── */
+
+.ui-tree-filled .ui-tree-node-selected {
+  background: var(--ui-accent-dim);
+  color: var(--ui-accent);
+}
+
+/* ── Glass variant ────────────────────────────────── */
+
+.ui-tree-glass .ui-tree-node:hover {
+  background: var(--ui-glass);
+  backdrop-filter: blur(8px);
+}
+
+.ui-tree-glass .ui-tree-node-selected {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Lined variant ────────────────────────────────── */
+
+.ui-tree-lined .ui-tree-children-lined {
+  position: relative;
+}
+
+.ui-tree-lined .ui-tree-children-lined::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 8px;
+  width: 1px;
+  background: var(--ui-border-strong);
+}
+
+.ui-tree-lined.ui-tree-sm .ui-tree-children-lined::before { left: 10px; }
+.ui-tree-lined.ui-tree-lg .ui-tree-children-lined::before { left: 18px; }
+
+.ui-tree-line {
+  display: none;
+}
+
+/* ── Toggle ───────────────────────────────────────── */
+
+.ui-tree-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--ui-text-2);
+  transition: transform var(--ui-t-fast);
+}
+
+.ui-tree-toggle-spacer {
+  display: inline-block;
+  width: 20px;
+}
+
+/* ── Icon ─────────────────────────────────────────── */
+
+.ui-tree-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--ui-text-2);
+}
+
+.ui-tree-node-selected .ui-tree-icon {
+  color: var(--ui-accent);
+}
+
+/* ── Label ────────────────────────────────────────── */
+
+.ui-tree-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Checkbox ─────────────────────────────────────── */
+
+.ui-tree-checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--ui-border-strong);
+  border-radius: 3px;
+  flex-shrink: 0;
+  transition: background var(--ui-t-fast), border-color var(--ui-t-fast);
+}
+
+.ui-tree-checkbox-checked {
+  background: var(--ui-accent);
+  border-color: var(--ui-accent);
+  color: var(--ui-bg-0);
+}
+
+/* ── Children animation ───────────────────────────── */
+
+.ui-tree-children {
+  overflow: hidden;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   SEARCH INPUT
+   ══════════════════════════════════════════════════════ */
+
+.ui-search-input {
+  font-family: var(--ui-font);
+  position: relative;
+  width: 100%;
+}
+
+/* ── Field wrapper ────────────────────────────────── */
+
+.ui-search-input-field {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-sp-2);
+  background: var(--ui-bg-2);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-r-md);
+  transition: border-color var(--ui-t-fast), box-shadow var(--ui-t-fast);
+}
+
+.ui-search-input-field:focus-within {
+  border-color: var(--ui-accent);
+  box-shadow: 0 0 0 2px var(--ui-accent-dim);
+}
+
+/* Sizes */
+.ui-search-input-sm .ui-search-input-field { padding: var(--ui-sp-1) var(--ui-sp-2); font-size: 13px; }
+.ui-search-input-md .ui-search-input-field { padding: var(--ui-sp-2) var(--ui-sp-3); font-size: 14px; }
+.ui-search-input-lg .ui-search-input-field { padding: var(--ui-sp-3) var(--ui-sp-4); font-size: 16px; }
+
+/* ── Variants ─────────────────────────────────────── */
+
+.ui-search-input-filled .ui-search-input-field {
+  background: var(--ui-bg-3);
+  border-color: transparent;
+}
+
+.ui-search-input-ghost .ui-search-input-field {
+  background: transparent;
+  border-color: transparent;
+}
+
+.ui-search-input-ghost .ui-search-input-field:focus-within {
+  background: var(--ui-bg-2);
+  border-color: var(--ui-accent);
+}
+
+.ui-search-input-glass .ui-search-input-field {
+  background: var(--ui-glass);
+  border-color: var(--ui-glass-border);
+  backdrop-filter: blur(12px);
+}
+
+/* ── Native input ─────────────────────────────────── */
+
+.ui-search-input-native {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ui-text-0);
+  font-family: inherit;
+  font-size: inherit;
+  min-width: 0;
+}
+
+.ui-search-input-native::placeholder {
+  color: var(--ui-text-2);
+}
+
+/* ── Icons and controls ───────────────────────────── */
+
+.ui-search-input-icon {
+  display: flex;
+  color: var(--ui-text-2);
+  flex-shrink: 0;
+}
+
+.ui-search-input-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--ui-text-2);
+  cursor: pointer;
+  padding: 2px;
+  border-radius: var(--ui-r-sm);
+  transition: color var(--ui-t-fast), background var(--ui-t-fast);
+}
+
+.ui-search-input-clear:hover {
+  color: var(--ui-text-0);
+  background: var(--ui-glass);
+}
+
+.ui-search-input-shortcut {
+  font-size: 11px;
+  padding: 2px 6px;
+  background: var(--ui-bg-3);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-r-sm);
+  color: var(--ui-text-2);
+  flex-shrink: 0;
+  font-family: var(--ui-font-mono);
+  line-height: 1;
+}
+
+/* ── Dropdown ─────────────────────────────────────── */
+
+.ui-search-input-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--ui-bg-2);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-r-md);
+  box-shadow: var(--ui-shadow-md);
+  z-index: var(--ui-z-overlay);
+  max-height: 320px;
+  overflow-y: auto;
+  padding: var(--ui-sp-1) 0;
+  animation: ui-search-dropdown-in var(--ui-t-fast) both;
+}
+
+.ui-search-input-glass .ui-search-input-dropdown {
+  background: var(--ui-glass);
+  backdrop-filter: blur(16px);
+  border-color: var(--ui-glass-border);
+}
+
+@keyframes ui-search-dropdown-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Options ──────────────────────────────────────── */
+
+.ui-search-input-option {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-sp-2);
+  padding: var(--ui-sp-2) var(--ui-sp-3);
+  cursor: pointer;
+  transition: background var(--ui-t-fast);
+  font-size: 14px;
+  color: var(--ui-text-1);
+}
+
+.ui-search-input-option:hover,
+.ui-search-input-option-active {
+  background: var(--ui-glass);
+  color: var(--ui-text-0);
+}
+
+.ui-search-input-option-icon {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--ui-text-2);
+}
+
+.ui-search-input-option-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ui-search-input-option-label {
+  color: var(--ui-text-0);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-search-input-option-desc {
+  font-size: 12px;
+  color: var(--ui-text-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Group header ─────────────────────────────────── */
+
+.ui-search-input-group-header {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ui-text-2);
+  padding: var(--ui-sp-2) var(--ui-sp-3) var(--ui-sp-1);
+}
+
+/* ── Recent searches ──────────────────────────────── */
+
+.ui-search-input-recent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--ui-sp-2) var(--ui-sp-3) var(--ui-sp-1);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ui-text-2);
+}
+
+.ui-search-input-recent-clear {
+  font-family: var(--ui-font);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ui-accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.ui-search-input-recent-clear:hover {
+  text-decoration: underline;
+}
+
+.ui-search-input-option-recent svg {
+  color: var(--ui-text-2);
+  flex-shrink: 0;
+}
+
+/* ── Loading ──────────────────────────────────────── */
+
+.ui-search-input-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-sp-2);
+  padding: var(--ui-sp-3) var(--ui-sp-3);
+  color: var(--ui-text-2);
+  font-size: 13px;
+}
+
+.ui-search-input-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--ui-border);
+  border-top-color: var(--ui-accent);
+  border-radius: var(--ui-r-full);
+  animation: ui-search-spin 0.6s linear infinite;
+}
+
+@keyframes ui-search-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Empty ────────────────────────────────────────── */
+
+.ui-search-input-empty {
+  padding: var(--ui-sp-4) var(--ui-sp-3);
+  text-align: center;
+  color: var(--ui-text-2);
+  font-size: 13px;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   LOADING OVERLAY
+   ══════════════════════════════════════════════════════ */
+
+.ui-loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--ui-z-overlay);
+  font-family: var(--ui-font);
+  animation: ui-loading-overlay-in var(--ui-t-base) both;
+}
+
+@keyframes ui-loading-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ui-loading-overlay-fullscreen {
+  position: fixed;
+  z-index: var(--ui-z-modal);
+}
+
+/* ── Variants ─────────────────────────────────────── */
+
+.ui-loading-overlay-default {
+  background: rgba(8, 8, 16, 0.7);
+}
+
+.ui-loading-overlay-glass {
+  background: rgba(8, 8, 16, 0.4);
+}
+
+.ui-loading-overlay-blur {
+  backdrop-filter: blur(6px);
+}
+
+.ui-loading-overlay-solid {
+  background: var(--ui-bg-0);
+}
+
+.ui-loading-overlay-minimal {
+  background: transparent;
+}
+
+/* ── Content ──────────────────────────────────────── */
+
+.ui-loading-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ui-sp-3);
+}
+
+/* ── Ring spinner ─────────────────────────────────── */
+
+.ui-loading-overlay-ring {
+  color: var(--ui-accent);
+  animation: ui-loading-ring-spin 1s linear infinite;
+}
+
+.ui-loading-overlay-ring svg {
+  display: block;
+}
+
+.ui-loading-overlay-ring-sm { width: 24px; height: 24px; }
+.ui-loading-overlay-ring-md { width: 36px; height: 36px; }
+.ui-loading-overlay-ring-lg { width: 48px; height: 48px; }
+
+@keyframes ui-loading-ring-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Text ─────────────────────────────────────────── */
+
+.ui-loading-overlay-message {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ui-text-0);
+}
+
+.ui-loading-overlay-sm .ui-loading-overlay-message { font-size: 13px; }
+.ui-loading-overlay-lg .ui-loading-overlay-message { font-size: 16px; }
+
+.ui-loading-overlay-description {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ui-text-2);
+}
+
+/* ── Progress bar ─────────────────────────────────── */
+
+.ui-loading-overlay-progress {
+  width: 180px;
+  height: 4px;
+  background: var(--ui-bg-3);
+  border-radius: var(--ui-r-full);
+  overflow: hidden;
+}
+
+.ui-loading-overlay-sm .ui-loading-overlay-progress { width: 120px; }
+.ui-loading-overlay-lg .ui-loading-overlay-progress { width: 240px; }
+
+.ui-loading-overlay-progress-bar {
+  height: 100%;
+  background: var(--ui-accent);
+  border-radius: var(--ui-r-full);
+  transition: width var(--ui-t-base);
+}
+
+/* ── Global spin keyframe for custom spinners ────── */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
