@@ -74,3 +74,8 @@ export * from './components/KBD'
 export * from './components/Sidebar'
 export * from './components/ThemeSwitcher'
 export * from './components/CommandPalette'
+
+export * from './components/DateRangePicker'
+export * from './components/ProgressRing'
+export * from './components/Chart'
+export * from './components/InvoiceCard'

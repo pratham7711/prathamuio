@@ -1,0 +1,364 @@
+/* ─── ProgressRing ──────────────────────────────────────────────────────────── */
+
+.ui-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-ring-svg { display: block; }
+
+.ui-ring-track {
+  stroke: var(--ui-border, rgba(255,255,255,0.08));
+}
+
+.ui-ring-fill {
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.ui-ring-accent .ui-ring-fill { stroke: var(--ui-accent, #5B5BD6); }
+.ui-ring-success .ui-ring-fill { stroke: var(--ui-success, #10B981); }
+.ui-ring-warning .ui-ring-fill { stroke: var(--ui-warning, #F59E0B); }
+.ui-ring-danger .ui-ring-fill { stroke: var(--ui-danger, #EF4444); }
+
+.ui-ring-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--ui-text-0, #fff);
+}
+
+.ui-ring-sm .ui-ring-label { font-size: 11px; }
+.ui-ring-md .ui-ring-label { font-size: 14px; }
+.ui-ring-lg .ui-ring-label { font-size: 18px; }
+.ui-ring-xl .ui-ring-label { font-size: 22px; }
+
+/* ─── Chart ────────────────────────────────────────────────────────────────── */
+
+.ui-chart {
+  position: relative;
+  width: 100%;
+}
+
+.ui-chart-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ui-text-0, #fff);
+  margin-bottom: 12px;
+}
+
+.ui-chart-svg { display: block; width: 100%; }
+
+.ui-chart-bar { transition: opacity 0.15s; cursor: pointer; }
+.ui-chart-bar:hover { opacity: 1 !important; }
+
+.ui-chart-dot { transition: r 0.15s; cursor: pointer; }
+.ui-chart-dot:hover { r: 6; }
+
+.ui-chart-slice { transition: opacity 0.15s; cursor: pointer; }
+.ui-chart-slice:hover { opacity: 0.85; }
+
+.ui-chart-line { transition: stroke-dashoffset 0.8s ease; }
+.ui-chart-area { transition: opacity 0.5s ease; }
+
+.ui-chart-label {
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--ui-text-0, #fff);
+}
+
+.ui-chart-axis-label {
+  font-size: 10px;
+  fill: var(--ui-text-2, rgba(255,255,255,0.45));
+}
+
+.ui-chart-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--ui-bg-3, #1c1c2a);
+  border: 1px solid var(--ui-border, rgba(255,255,255,0.08));
+  border-radius: var(--ui-r-md, 8px);
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 50;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.ui-chart-tooltip-label {
+  font-size: 11px;
+  color: var(--ui-text-2, rgba(255,255,255,0.45));
+}
+
+.ui-chart-tooltip-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ui-text-0, #fff);
+}
+
+.ui-chart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--ui-text-2, rgba(255,255,255,0.45));
+  font-size: 14px;
+}
+
+/* ─── DateRangePicker ──────────────────────────────────────────────────────── */
+
+.ui-daterange { position: relative; display: inline-flex; flex-direction: column; gap: 4px; }
+
+.ui-daterange-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ui-text-1, rgba(255,255,255,0.75));
+}
+
+.ui-daterange-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--ui-r-md, 10px);
+  border: 1px solid var(--ui-border, rgba(255,255,255,0.08));
+  background: var(--ui-bg-1, #0f0f1a);
+  color: var(--ui-text-0, #fff);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  min-width: 240px;
+}
+
+.ui-daterange-trigger:hover { border-color: var(--ui-accent, #5B5BD6); }
+.ui-daterange-trigger:focus { outline: 2px solid var(--ui-accent, #5B5BD6); outline-offset: 2px; }
+
+.ui-daterange-sm .ui-daterange-trigger { padding: 6px 10px; font-size: 13px; min-width: 200px; }
+.ui-daterange-lg .ui-daterange-trigger { padding: 10px 14px; font-size: 15px; min-width: 280px; }
+
+.ui-daterange-filled .ui-daterange-trigger { background: var(--ui-bg-2, #15151f); border-color: transparent; }
+.ui-daterange-ghost .ui-daterange-trigger { background: transparent; border-color: transparent; }
+
+.ui-daterange-disabled .ui-daterange-trigger { opacity: 0.5; cursor: not-allowed; }
+
+.ui-daterange-icon { flex-shrink: 0; opacity: 0.5; }
+.ui-daterange-text { flex: 1; text-align: left; }
+.ui-daterange-chevron { flex-shrink: 0; opacity: 0.4; }
+
+.ui-daterange-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 100;
+  display: flex;
+  background: var(--ui-bg-2, #15151f);
+  border: 1px solid var(--ui-border, rgba(255,255,255,0.08));
+  border-radius: var(--ui-r-md, 10px);
+  box-shadow: var(--ui-shadow-lg, 0 8px 32px rgba(0,0,0,0.5));
+  overflow: hidden;
+}
+
+.ui-daterange-presets {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border-right: 1px solid var(--ui-border, rgba(255,255,255,0.08));
+  min-width: 130px;
+}
+
+.ui-daterange-preset {
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--ui-text-1, rgba(255,255,255,0.75));
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s;
+}
+.ui-daterange-preset:hover { background: var(--ui-bg-3, #1c1c2a); color: var(--ui-text-0, #fff); }
+
+.ui-daterange-calendars { padding: 12px; }
+
+.ui-daterange-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.ui-daterange-nav-btn {
+  background: none;
+  border: none;
+  color: var(--ui-text-1);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.ui-daterange-nav-btn:hover { background: var(--ui-bg-3, #1c1c2a); }
+
+.ui-daterange-nav-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ui-text-0, #fff);
+}
+
+.ui-daterange-dual { display: flex; gap: 16px; }
+
+.ui-daterange-month { min-width: 220px; }
+.ui-daterange-month-label { display: none; }
+
+.ui-daterange-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.ui-daterange-weekday {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ui-text-2);
+  text-align: center;
+  padding: 4px 0;
+}
+
+.ui-daterange-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.ui-daterange-day-pad { width: 32px; height: 32px; }
+
+.ui-daterange-day {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--ui-text-1);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.ui-daterange-day:hover { background: var(--ui-bg-3, #1c1c2a); }
+.ui-daterange-day-start,
+.ui-daterange-day-end {
+  background: var(--ui-accent, #5B5BD6) !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.ui-daterange-day-inrange {
+  background: var(--ui-accent-dim, rgba(91,91,214,0.15));
+  border-radius: 0;
+}
+
+.ui-daterange-day-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ─── InvoiceCard ──────────────────────────────────────────────────────────── */
+
+.ui-invoice {
+  background: var(--ui-bg-1, #0f0f1a);
+  border: 1px solid var(--ui-border, rgba(255,255,255,0.08));
+  border-radius: var(--ui-r-md, 10px);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.15s;
+}
+
+.ui-invoice-clickable { cursor: pointer; }
+.ui-invoice-clickable:hover { border-color: var(--ui-accent, #5B5BD6); }
+
+.ui-invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui-invoice-number {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ui-text-1, rgba(255,255,255,0.75));
+}
+
+.ui-invoice-status {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ui-invoice-status-paid { background: rgba(16,185,129,0.15); color: #10B981; }
+.ui-invoice-status-pending { background: rgba(245,158,11,0.15); color: #F59E0B; }
+.ui-invoice-status-overdue { background: rgba(239,68,68,0.15); color: #EF4444; }
+.ui-invoice-status-draft { background: var(--ui-bg-3, #1c1c2a); color: var(--ui-text-2); }
+
+.ui-invoice-amount {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ui-text-0, #fff);
+}
+
+.ui-invoice-entity {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ui-text-1);
+}
+
+.ui-invoice-desc {
+  font-size: 12px;
+  color: var(--ui-text-2);
+}
+
+.ui-invoice-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid var(--ui-border, rgba(255,255,255,0.08));
+}
+
+.ui-invoice-dates {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--ui-text-2);
+}
+
+.ui-invoice-download {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ui-accent, #5B5BD6);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.1s;
+}
+
+.ui-invoice-download:hover { background: var(--ui-accent-dim, rgba(91,91,214,0.15)); }
