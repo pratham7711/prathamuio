@@ -398,7 +398,7 @@
 }
 .ui-pricing-card-cta-glow:hover:not(:disabled) {
   filter: brightness(1.15);
-  box-shadow: 0 0 32px var(--ui-accent-glow);
+  box-shadow: var(--ui-shadow-lg);
 }
 
 .ui-pricing-card-cta:focus-visible {
@@ -465,11 +465,11 @@
 
 .ui-pricing-card-featured {
   border-color: var(--ui-accent);
-  box-shadow: 0 0 24px var(--ui-accent-glow), var(--ui-shadow-md);
+  box-shadow: var(--ui-shadow-md);
 }
 
 .ui-pricing-card-featured:hover {
-  box-shadow: 0 0 32px var(--ui-accent-glow), var(--ui-shadow-lg);
+  box-shadow: var(--ui-shadow-lg);
 }
 
 /* ── Highlighted ────────────────────────────────────── */

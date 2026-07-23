@@ -369,7 +369,7 @@
   background: var(--ui-accent-dim);
   border-color: var(--ui-accent);
   color: var(--ui-accent);
-  box-shadow: 0 0 12px var(--ui-accent-glow);
+  box-shadow: var(--ui-shadow-sm);
 }
 
 .ui-step-active .ui-step-label {
@@ -517,7 +517,7 @@
 
 .ui-stepper-dots .ui-step-active .ui-step-indicator {
   background: var(--ui-accent);
-  box-shadow: 0 0 12px var(--ui-accent-glow);
+  box-shadow: var(--ui-shadow-sm);
 }
 
 .ui-stepper-dots .ui-step-completed .ui-step-indicator {
@@ -663,7 +663,7 @@
   background: var(--ui-accent);
   width: 24px;
   border-radius: var(--ui-r-full);
-  box-shadow: 0 0 8px var(--ui-accent-glow);
+  box-shadow: var(--ui-shadow-sm);
 }
 
 /* Sizes */

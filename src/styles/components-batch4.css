@@ -131,7 +131,7 @@
 /* Hover */
 .ui-checkbox:not(.ui-checkbox-disabled) .ui-checkbox-label:hover .ui-checkbox-box {
   border-color: var(--ui-accent);
-  box-shadow: 0 0 12px var(--ui-accent-glow);
+  box-shadow: var(--ui-shadow-sm);
 }
 
 /* Error */
@@ -308,7 +308,7 @@
 .ui-radio-card.ui-radio-checked {
   border-color: var(--ui-accent);
   background: var(--ui-accent-glow);
-  box-shadow: 0 0 16px var(--ui-accent-glow), var(--ui-shadow-sm);
+  box-shadow: var(--ui-shadow-sm);
 }
 
 /* Focus ring */
@@ -321,7 +321,7 @@
 /* Hover */
 .ui-radio:not(.ui-radio-disabled):not(.ui-radio-card):hover .ui-radio-circle {
   border-color: var(--ui-accent);
-  box-shadow: 0 0 12px var(--ui-accent-glow);
+  box-shadow: var(--ui-shadow-sm);
 }
 
 /* Error on group */
@@ -414,12 +414,12 @@
 }
 
 .ui-slider-gradient .ui-slider-fill {
-  background: linear-gradient(90deg, var(--ui-accent), #8b5cf6, #ec4899);
+  background: linear-gradient(90deg, var(--ui-accent), color-mix(in srgb, var(--ui-accent) 65%, #ffffff));
 }
 
 .ui-slider-accent .ui-slider-fill {
   background: var(--ui-accent);
-  box-shadow: 0 0 12px var(--ui-accent-glow);
+  box-shadow: var(--ui-shadow-sm);
 }
 
 /* Thumb */
@@ -451,7 +451,7 @@
 
 /* Hover glow */
 .ui-slider-thumb:hover {
-  box-shadow: 0 0 16px var(--ui-accent-dim), var(--ui-shadow-sm);
+  box-shadow: var(--ui-shadow-sm);
 }
 
 /* Tooltip */
@@ -562,7 +562,7 @@
 .ui-file-upload-zone:hover {
   border-color: var(--ui-accent);
   background: var(--ui-accent-glow);
-  box-shadow: 0 0 24px var(--ui-accent-glow);
+  box-shadow: var(--ui-shadow-sm);
 }
 
 .ui-file-upload-zone:focus-visible {
@@ -576,7 +576,7 @@
   border-color: var(--ui-accent);
   border-style: solid;
   background: var(--ui-accent-glow);
-  box-shadow: 0 0 32px var(--ui-accent-glow), inset 0 0 20px var(--ui-accent-glow);
+  box-shadow: var(--ui-shadow-md);
   transform: scale(1.01);
 }
 
@@ -650,7 +650,7 @@
   border-color: var(--ui-accent);
   color: var(--ui-accent);
   background: var(--ui-glass);
-  box-shadow: 0 0 16px var(--ui-accent-glow);
+  box-shadow: var(--ui-shadow-sm);
 }
 
 .ui-file-upload-btn:focus-visible {
